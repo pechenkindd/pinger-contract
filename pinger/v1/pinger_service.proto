@@ -24,4 +24,7 @@ message PingRequest {
 }
 
 // Ответ ручки Ping
-message PingResponse {}
+message PingResponse {
+  // Результат пинга
+  bool success = 1;
+}
