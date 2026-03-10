@@ -17,7 +17,9 @@ message PingRequest {
   // UUID узла который надо пингануть
   string node_id = 1 [(buf.validate.field).string.uuid = true];
   // Таймаут на пинг
-  google.protobuf.Duration timeout = 2 [(buf.validate.field).duration.lt = "15s"];
+  google.protobuf.Duration timeout = 2 [(buf.validate.field).duration.lt = {
+    seconds: 10
+  }];
 
   // Сообщение из payload_message.proto
   Payload payload = 3;
