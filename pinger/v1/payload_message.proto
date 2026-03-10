@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package pinger.v1;
+
+import "buf/validate/validate.proto";
+
+// Сообщение с какой-то полезной нагрузкой
+message Payload {
+  // email
+  string email = 1 [(buf.validate.field).string.email = true];
+}

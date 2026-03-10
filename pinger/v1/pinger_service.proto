@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package pinger.v1;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
+import "pinger/v1/payload_message.proto";
+
+// Тестовый сервис
+service PingerService {
+  // Тестовая ручка
+  rpc Ping(PingRequest) returns (PingResponse);
+}
+
+// Запрос ручки Ping
+message PingRequest {
+  // UUID узла который надо пингануть
+  string node_id = 1 [(buf.validate.field).string.uuid = true];
+  // Таймаут на пинг
+  google.protobuf.Duration timeout = 2 [(buf.validate.field).duration.lt = "15s"];
+
+  // Сообщение из payload_message.proto
+  Payload payload = 3;
+}
+
+// Ответ ручки Ping
+message PingResponse {}
