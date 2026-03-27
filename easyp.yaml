@@ -56,7 +56,7 @@ lint:
 
 deps:
   - github.com/bufbuild/protovalidate@v1.1.1 # validation 
-  - github.com/googleapis/googleapis@common-protos-1_3_1 # well-known type Duration
+  - github.com/googleapis/googleapis # well-known type Duration
 
 # Breaking change detection settings.
 breaking:

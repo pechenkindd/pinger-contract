@@ -5,11 +5,17 @@ package pinger.v1;
 import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "pinger/v1/payload_message.proto";
+import "google/api/annotations.proto";
 
 // Тестовый сервис
 service PingerService {
   // Тестовая ручка
-  rpc Ping(PingRequest) returns (PingResponse);
+  rpc Ping(PingRequest) returns (PingResponse) {
+    option (google.api.http) = {
+      post: "/v1/ping"
+      body: "*"
+    };
+  };
 }
 
 // Запрос ручки Ping
